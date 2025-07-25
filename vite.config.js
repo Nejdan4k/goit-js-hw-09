@@ -1,3 +1,4 @@
+
 import { defineConfig } from 'vite';
 import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
@@ -10,7 +11,6 @@ export default defineConfig(({ command }) => {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',
-    base: '/goit-js-hw-09/', // 🧨 ДОДАЙ ЦЕ рядок — обов’язково!
     build: {
       sourcemap: true,
       rollupOptions: {
