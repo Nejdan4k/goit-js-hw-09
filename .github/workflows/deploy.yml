@@ -4,14 +4,17 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write  # 🔐 Дозвіл на push
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
+      - name: Checkout 🧾
         uses: actions/checkout@v2.3.1
 
-      - name: Install and build 🔧
+      - name: Install and build 🛠️
         run: |
           npm install
           npm run build
@@ -21,3 +24,5 @@ jobs:
         with:
           branch: gh-pages
           folder: dist
+          token: ${{ secrets.GITHUB_TOKEN }} # 🔐 Токен доступу
+
