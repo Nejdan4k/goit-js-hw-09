@@ -1,117 +1,153 @@
-html {
-  box-sizing: border-box;
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-}
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
+/* Common styles */
+@import url('./reset.css');
+@import url('./base.css');
+@import url('./container.css');
+@import url('./animations.css');
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-  background-color: #fff;
-  color: #212121;
-}
+/* Sections style */
+@import url('./header.css');
+@import url('./badges.css');
+@import url('./back-link.css');
+
 
 .gallery {
-  display: grid;
-  width: 1200px;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  grid-auto-rows: 240px;
-  grid-gap: 12px;
   padding: 0;
-  list-style: none;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+  max-width: 1128px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  row-gap: 24px;
 }
 
-.gallery__item {
-  position: relative;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+.gallery-item {
+  max-width: calc((100% - 48px)/3);
+  max-height: 200px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-.gallery__image:hover {
-  transform: scale(1.03);
+.sl-wrapper {
+  background: rgba(46, 47, 66, 0.8);
 }
 
-.gallery__image {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  transition: transform var(--animation-duration) var(--timing-function);
+.sl-wrapper button.sl-close {
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
 }
 
-.gallery__link {
-  display: block;
-  text-decoration: none;
-  height: 100%;
+.sl-wrapper div.sl-counter {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
 }
 
-.gallery__link:hover {
-  cursor: zoom-in;
+.sl-wrapper .sl-navigation button.sl-next {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
 }
 
-label {
-  margin-block: 15px;
+.sl-wrapper .sl-navigation button.sl-prev {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+div.sl-caption {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.feedback-form {
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-input {
-  width: 360px;
-  height: 40px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(128, 128, 128, 1);
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-}
-textarea {
-  width: 360px;
-  height: 120px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(128, 128, 128, 1);
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-}
-button {
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-family: Montserrat;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 1);
-  border: 0;
-  cursor: pointer;
-  background-color: rgba(78, 117, 255, 1);
+  max-width: 408px;
+  margin: 0 auto;
+  padding: 24px;
 }
 
-button[type='submit'] {
-  background-color: rgba(78, 117, 255, 1);
+.feedback-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  max-width: 360px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
 }
-button[type='submit']:hover {
-  background-color: rgba(108, 140, 255, 1);
+
+.feedback-form input {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 360px;
+  height: 40px;
+  padding: 0 8px 0 8px;
 }
-button[type='reset'] {
-  background-color: rgba(255, 78, 78, 1);
+
+.feedback-form>input:hover {
+  border: 1px solid #000;
 }
-button[type='reset']:hover {
-  background-color: rgba(255, 112, 112, 1);
+
+.feedback-form>input:active {
+  border: 1px solid #808080;
+}
+
+.feedback-form textarea {
+  border: 1px solid #808080;
+  border-radius: 4px;
+  width: 360px;
+  height: 80px;
+  margin-bottom: 16px;
+  padding: 8px;
+}
+
+.feedback-form>textarea:hover {
+  border: 1px solid #000;
+}
+
+.feedback-form button {
+  border-radius: 8px;
+  padding: 8px 16px;
+  width: 95px;
+  height: 40px;
+  background: #4e75ff;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #fff;
+  border: none;
+}
+
+.feedback-form button:hover {
+  background: #6c8cff;
 }
